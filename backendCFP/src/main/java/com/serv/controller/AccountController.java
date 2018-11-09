@@ -1,4 +1,4 @@
-package com.social.controller;
+package com.serv.controller;
 
 import java.security.Principal;
 
@@ -13,9 +13,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.social.services.UserService;
-import com.social.util.CustomErrorType;
-import com.social.entities.User;
+import com.serv.entities.User;
+import com.serv.services.UserService;
+import com.serv.util.CustomErrorType;
 
 @RestController
 @RequestMapping("account")

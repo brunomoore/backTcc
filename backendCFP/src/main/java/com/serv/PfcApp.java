@@ -1,16 +1,16 @@
-package com.social;
+package com.serv;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 /**
  * 
- * @author kamal berriga
+ * @author moore bruno
  *
  */
 @SpringBootApplication
-public class SpringBootSocialAuthApplication {
+public class PfcApp {
 
 	public static void main(String[] args) {
-		SpringApplication.run(SpringBootSocialAuthApplication.class, args);
+		SpringApplication.run(PfcApp.class, args);
 	}
 }

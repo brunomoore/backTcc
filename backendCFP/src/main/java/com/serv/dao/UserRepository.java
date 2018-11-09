@@ -1,14 +1,11 @@
-package com.social.dao;
+package com.serv.dao;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import com.social.entities.User;
-/** 
- * @author kamal berriga
- *
- */
-/* this the user  Repository interface  */ 
+import com.serv.entities.User;
+
+
 @Repository
 public interface UserRepository extends JpaRepository<User, Long> {
 

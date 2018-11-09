@@ -1,6 +1,6 @@
-package com.social.util;
+package com.serv.util;
 /** 
- * @author kamal berriga
+ * @author moore bruno
  *
  */
 public class CustomErrorType {

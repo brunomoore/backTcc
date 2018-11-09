@@ -1,15 +1,14 @@
-package com.social.entities;
-
-
-/*******************************************************************************
- * 2017, this is the user entity class ,
- * this class implements users details of the spring security framework
- *******************************************************************************/
+package com.serv.entities;
 
 import java.util.ArrayList;
 import java.util.Collection;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
 import org.springframework.context.annotation.Scope;
 import org.springframework.security.core.GrantedAuthority;
@@ -19,15 +18,16 @@ import org.springframework.security.core.userdetails.UserDetails;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonProperty.Access;
-/**
- * Description of User.
- * 
- * @author kamal berriga
- */
+
 @Entity
 @Table(name="User")
 @Scope("session")
 public  class User implements UserDetails{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	public static enum Role{ USER }
 	/**
 	 * Description of the property id.

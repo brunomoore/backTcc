@@ -16,8 +16,9 @@ import org.springframework.test.web.servlet.MvcResult;
 import org.springframework.test.web.servlet.RequestBuilder;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 
-import com.social.entities.User;
-import com.social.services.UserService;
+import com.serv.controller.AccountController;
+import com.serv.entities.User;
+import com.serv.services.UserService;
 
 @RunWith(SpringRunner.class)
 @WebMvcTest(value = AccountController.class,secure=false)

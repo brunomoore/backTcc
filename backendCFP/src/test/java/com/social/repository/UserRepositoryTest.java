@@ -13,9 +13,9 @@ import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import com.social.dao.UserRepository;
-import com.social.entities.User;
-import com.social.services.UserService;
+import com.serv.dao.UserRepository;
+import com.serv.entities.User;
+import com.serv.services.UserService;
 
 @ActiveProfiles("test")
 @RunWith(SpringRunner.class)

@@ -1,4 +1,4 @@
-package com.social.config;
+package com.serv.config;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Configurable;
@@ -15,10 +15,10 @@ import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 
-import com.social.services.AppUserDetailsService;
+import com.serv.services.AppUserDetailsService;
 
 /**
- * @author kamal berriga
+ * @author moore bruno
  *
  */
 @Configurable

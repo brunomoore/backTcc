@@ -1,12 +1,12 @@
-package com.social.services;
+package com.serv.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.social.dao.UserRepository;
-import com.social.entities.User;
+import com.serv.dao.UserRepository;
+import com.serv.entities.User;
 /** 
- * @author kamal berriga
+ * @author moore bruno
  *
  */
 @Service
