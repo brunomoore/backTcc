@@ -1,6 +1,7 @@
 package com.serv.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
 import com.serv.dao.UserRepository;
@@ -29,5 +30,10 @@ public class UserService {
 
 	public User find(Long id) {
 		return userRepository.findOne(id);
+	}
+	
+	public User getCurrent() {
+		User userAuth = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		return userAuth;
 	}
 }

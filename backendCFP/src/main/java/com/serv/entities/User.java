@@ -3,11 +3,14 @@ package com.serv.entities;
 import java.util.ArrayList;
 import java.util.Collection;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import org.springframework.context.annotation.Scope;
@@ -52,16 +55,23 @@ public  class User implements UserDetails{
     /**
 	 * Description of the property full name.
 	 */
-    private String fullName;
+    private String name;
+    
+    private String lastName;
+    
+    private Integer age;
+    
 
     public User(){
     	
     }
     
-    public User(String username,String password,String fullName){
+    public User(String username,String password,String name, String lastName, Integer age){
     	this.username=username;
     	this.password= password;
-    	this.fullName=fullName;
+    	this.name=name;
+    	this.lastName=lastName;
+    	this.age=age;
     }
 	@JsonIgnore
 	@Override
@@ -130,12 +140,47 @@ public  class User implements UserDetails{
 		this.password = password;
 	}
 
-	public String getFullName() {
-		return fullName;
+
+	/**
+	 * @return the name
+	 */
+	public String getName() {
+		return name;
 	}
 
-	public void setFullName(String fullName) {
-		this.fullName = fullName;
+	/**
+	 * @param name the name to set
+	 */
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	/**
+	 * @return the lastName
+	 */
+	public String getLastName() {
+		return lastName;
+	}
+
+	/**
+	 * @param lastName the lastName to set
+	 */
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
+	}
+
+	/**
+	 * @return the age
+	 */
+	public Integer getAge() {
+		return age;
+	}
+
+	/**
+	 * @param age the age to set
+	 */
+	public void setAge(Integer age) {
+		this.age = age;
 	}
 
 	public Long getId() {
