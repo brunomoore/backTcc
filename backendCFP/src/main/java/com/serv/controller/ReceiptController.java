@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.serv.entities.Receipt;
@@ -32,8 +33,8 @@ public class ReceiptController {
 	}
 	
 	@RequestMapping( method = RequestMethod.GET)
-	public ResponseEntity<List<Receipt>> findAll(){
-		return new ResponseEntity<>(receiptService.findAll(),HttpStatus.OK);
+	public ResponseEntity<List<Receipt>> findAll(@RequestParam Long id){
+		return new ResponseEntity<>(receiptService.findAll(id),HttpStatus.OK);
 	}
 	
 	@RequestMapping( method = RequestMethod.POST)

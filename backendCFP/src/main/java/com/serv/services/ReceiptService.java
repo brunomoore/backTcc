@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.serv.dao.ReceiptRepository;
 import com.serv.entities.Receipt;
+import com.serv.entities.User;
 /** 
  * @author moore bruno
  *
@@ -16,6 +17,9 @@ public class ReceiptService {
 
 	@Autowired
 	ReceiptRepository receiptRepository;
+	
+	@Autowired
+	UserService userService;
 
 	public Receipt save(Receipt receipt) {
 		return receiptRepository.saveAndFlush(receipt);
@@ -25,8 +29,8 @@ public class ReceiptService {
 		return receiptRepository.save(receipt);
 	}
 
-	public List<Receipt> findAll() {
-		return receiptRepository.findAll();
+	public List<Receipt> findAll(Long id) {
+		return receiptRepository.findByUserParams(id);
 	}
 
 	public Receipt findById(Long id) {

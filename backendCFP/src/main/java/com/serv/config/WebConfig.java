@@ -10,7 +10,6 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
-import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
@@ -65,7 +64,12 @@ public class WebConfig extends WebSecurityConfigurerAdapter {
 		// starts authorizing configurations
 		.authorizeRequests()
 		// ignoring the guest's urls "
-		.antMatchers("/account/register","/account/login","/logout").permitAll()
+		.antMatchers(
+				"/account/register",
+				"/account/login",
+				"/logout",
+				"/receipt",
+				"/expense").permitAll()
 		// authenticate all remaining URLS
 		.anyRequest().fullyAuthenticated().and()
       /* "/logout" will log the user out by invalidating the HTTP Session,
