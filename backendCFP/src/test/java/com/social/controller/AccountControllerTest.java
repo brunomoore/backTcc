@@ -37,7 +37,7 @@ public class AccountControllerTest {
 	String exmapleUser = "{\"userName\":\"user\",\"password\":\"my pass\",\"fullName\":\"my fullName\"}";
 	@Test
 	public void registerTest() throws Exception {
-		User mockUser = new User("my userName","my password","my fullName");
+		User mockUser = new User("my userName","my password","my name","my lastName", 0);
 		
 
 		// userService.save to respond back with mockUser

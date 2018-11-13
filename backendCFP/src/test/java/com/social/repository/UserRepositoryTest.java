@@ -32,13 +32,15 @@ public class UserRepositoryTest {
 	public void testSave() {
 		User user = new User();
 		user.setUsername("user.user");
-		user.setFullName("kamalbberriga");
+		user.setName("bruno");
+		user.setLastName("moore");
+		user.setAge(21);
 		entityManager.persist(user);
 		entityManager.flush();
 		// when
 		User testUser = userRepository.findOne(user.getId());
 		// then
-		assertThat(testUser.getFullName()).isEqualTo(user.getFullName());
+		assertThat(testUser.getName()).isEqualTo(user.getName());
 	}
 
 
@@ -46,8 +48,9 @@ public class UserRepositoryTest {
     @Test
     public void findOneByUsername() {
     	User user = new User();
-		user.setUsername("user.user");
-		user.setFullName("kamalberriga");
+    	user.setName("bruno");
+		user.setLastName("moore");
+		user.setAge(21);
         entityManager.persist(user);
 
         User testUser = userRepository.findOneByUsername(user.getUsername());
