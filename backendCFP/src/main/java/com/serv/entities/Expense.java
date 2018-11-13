@@ -18,8 +18,8 @@ import javax.persistence.Table;
  */
 
 @Entity
-@Table(name="Receipt")
-public class Receipt {
+@Table(name="Expense")
+public class Expense {
 
 	@Id
 	@GeneratedValue(strategy= GenerationType.IDENTITY)
@@ -37,7 +37,7 @@ public class Receipt {
 	
 	@ManyToOne
 	@JoinColumn(name="type_id")
-	private ReceiptType type;
+	private ExpenseType type;
 	
 	/**
 	 * @return the id
@@ -98,14 +98,14 @@ public class Receipt {
 	/**
 	 * @return the type
 	 */
-	public ReceiptType getType() {
+	public ExpenseType getType() {
 		return type;
 	}
 
 	/**
 	 * @param type the type to set
 	 */
-	public void setType(ReceiptType type) {
+	public void setType(ExpenseType type) {
 		this.type = type;
 	}
 	
