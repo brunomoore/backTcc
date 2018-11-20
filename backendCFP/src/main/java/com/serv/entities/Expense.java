@@ -3,6 +3,8 @@
  */
 package com.serv.entities;
 
+import java.time.LocalDate;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -38,6 +40,12 @@ public class Expense {
 	@ManyToOne
 	@JoinColumn(name="type_id")
 	private ExpenseType type;
+	
+	@Column(name="expense_date")
+	private LocalDate expenseDate;
+	
+	@Column(name="expense_pay")
+	private Boolean pay;
 	
 	/**
 	 * @return the id
@@ -108,6 +116,21 @@ public class Expense {
 	public void setType(ExpenseType type) {
 		this.type = type;
 	}
+
+	/**
+	 * @return the expenseDate
+	 */
+	public LocalDate getExpenseDate() {
+		return expenseDate;
+	}
+
+	/**
+	 * @param expenseDate the expenseDate to set
+	 */
+	public void setExpenseDate(LocalDate expenseDate) {
+		this.expenseDate = expenseDate;
+	}
+	
 	
 	
 
