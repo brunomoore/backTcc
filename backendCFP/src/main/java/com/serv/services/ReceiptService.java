@@ -7,7 +7,6 @@ import org.springframework.stereotype.Service;
 
 import com.serv.dao.ReceiptRepository;
 import com.serv.entities.Receipt;
-import com.serv.entities.User;
 /** 
  * @author moore bruno
  *
@@ -35,6 +34,10 @@ public class ReceiptService {
 
 	public Receipt findById(Long id) {
 		return receiptRepository.findOne(id);
+	}
+	
+	public void delete(Long id) {
+		receiptRepository.delete(id);
 	}
 
 }

@@ -3,6 +3,8 @@
  */
 package com.serv.entities;
 
+import java.time.LocalDate;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -38,6 +40,15 @@ public class Receipt {
 	@ManyToOne
 	@JoinColumn(name="type_id")
 	private ReceiptType type;
+	
+	@Column(name="receipt_date")
+	private LocalDate receiptDate;
+	
+	@Column(name="receipt_expire_date")
+	private LocalDate expireDate;
+	
+	@Column(name="receipt_pay")
+	private Boolean pay;
 	
 	/**
 	 * @return the id
@@ -107,6 +118,48 @@ public class Receipt {
 	 */
 	public void setType(ReceiptType type) {
 		this.type = type;
+	}
+
+	/**
+	 * @return the receiptDate
+	 */
+	public LocalDate getReceiptDate() {
+		return receiptDate;
+	}
+
+	/**
+	 * @param receiptDate the receiptDate to set
+	 */
+	public void setReceiptDate(LocalDate receiptDate) {
+		this.receiptDate = receiptDate;
+	}
+
+	/**
+	 * @return the expireDate
+	 */
+	public LocalDate getExpireDate() {
+		return expireDate;
+	}
+
+	/**
+	 * @param expireDate the expireDate to set
+	 */
+	public void setExpireDate(LocalDate expireDate) {
+		this.expireDate = expireDate;
+	}
+
+	/**
+	 * @return the pay
+	 */
+	public Boolean getPay() {
+		return pay;
+	}
+
+	/**
+	 * @param pay the pay to set
+	 */
+	public void setPay(Boolean pay) {
+		this.pay = pay;
 	}
 	
 	

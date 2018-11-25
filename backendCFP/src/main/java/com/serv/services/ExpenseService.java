@@ -7,7 +7,6 @@ import org.springframework.stereotype.Service;
 
 import com.serv.dao.ExpenseRepository;
 import com.serv.entities.Expense;
-import com.serv.entities.User;
 /** 
  * @author moore bruno
  *
@@ -37,5 +36,10 @@ public class ExpenseService {
 	public Expense findById(Long id) {
 		return expenseRepository.findOne(id);
 	}
+	
+	public void delete(Long id) {
+		expenseRepository.delete(id);
+	}
+	
 
 }

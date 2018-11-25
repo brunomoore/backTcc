@@ -44,6 +44,9 @@ public class Expense {
 	@Column(name="expense_date")
 	private LocalDate expenseDate;
 	
+	@Column(name="expense_expire_date")
+	private LocalDate expireDate;
+	
 	@Column(name="expense_pay")
 	private Boolean pay;
 	
@@ -129,6 +132,34 @@ public class Expense {
 	 */
 	public void setExpenseDate(LocalDate expenseDate) {
 		this.expenseDate = expenseDate;
+	}
+
+	/**
+	 * @return the expireDate
+	 */
+	public LocalDate getExpireDate() {
+		return expireDate;
+	}
+
+	/**
+	 * @param expireDate the expireDate to set
+	 */
+	public void setExpireDate(LocalDate expireDate) {
+		this.expireDate = expireDate;
+	}
+
+	/**
+	 * @return the pay
+	 */
+	public Boolean getPay() {
+		return pay;
+	}
+
+	/**
+	 * @param pay the pay to set
+	 */
+	public void setPay(Boolean pay) {
+		this.pay = pay;
 	}
 	
 	

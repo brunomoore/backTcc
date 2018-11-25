@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.serv.entities.Expense;
 import com.serv.entities.Receipt;
 import com.serv.services.ReceiptService;
 
@@ -47,6 +48,11 @@ public class ReceiptController {
 		return new ResponseEntity<>(receiptService.update(receipt), HttpStatus.OK);
 	}
 
+	@RequestMapping(value="/{receiptId}", method=RequestMethod.DELETE)
+	public ResponseEntity<Receipt> delete(@PathVariable Long receiptId) {
+		receiptService.delete(receiptId);
+		return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+	}
 
 	
 }
