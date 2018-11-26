@@ -13,10 +13,14 @@ import com.serv.entities.Expense;
 @Repository
 public interface ExpenseRepository extends JpaRepository<Expense, Long> {
 	
-	@Query("select name,sum(value) as despesas from\r\n" + 
-			"Expense\r\n" + 
-			"where user_id = :id\r\n" + 
-			"GROUP BY name")
+	@Query("select e from\r\n" + 
+			"Expense e\r\n" + 
+			"where user_id = :id\r\n")
 	List<Expense> findByUserParams(@Param("id") Long id);
+	@Query("select e from\r\n"+
+			"Expense e\r\n" +
+			"where user_id = :id\r\n" +
+			"and  EXTRACT(MONTH FROM expense_expire_date) = :mes")
+	List<Expense> findByMes(@Param("id") Long id, @Param("mes") int mes);
 
 }

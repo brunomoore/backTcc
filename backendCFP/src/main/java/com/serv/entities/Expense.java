@@ -3,7 +3,7 @@
  */
 package com.serv.entities;
 
-import java.time.LocalDate;
+import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -42,13 +42,17 @@ public class Expense {
 	private ExpenseType type;
 	
 	@Column(name="expense_date")
-	private LocalDate expenseDate;
+	private Date expenseDate;
 	
 	@Column(name="expense_expire_date")
-	private LocalDate expireDate;
+	private Date expireDate;
 	
 	@Column(name="expense_pay")
 	private Boolean pay;
+	
+	@Column(name="parcela")
+	private Integer parcela;
+	
 	
 	/**
 	 * @return the id
@@ -123,28 +127,28 @@ public class Expense {
 	/**
 	 * @return the expenseDate
 	 */
-	public LocalDate getExpenseDate() {
+	public Date getExpenseDate() {
 		return expenseDate;
 	}
 
 	/**
 	 * @param expenseDate the expenseDate to set
 	 */
-	public void setExpenseDate(LocalDate expenseDate) {
+	public void setExpenseDate(Date expenseDate) {
 		this.expenseDate = expenseDate;
 	}
 
 	/**
 	 * @return the expireDate
 	 */
-	public LocalDate getExpireDate() {
+	public Date getExpireDate() {
 		return expireDate;
 	}
 
 	/**
 	 * @param expireDate the expireDate to set
 	 */
-	public void setExpireDate(LocalDate expireDate) {
+	public void setExpireDate(Date expireDate) {
 		this.expireDate = expireDate;
 	}
 
@@ -160,6 +164,20 @@ public class Expense {
 	 */
 	public void setPay(Boolean pay) {
 		this.pay = pay;
+	}
+
+	/**
+	 * @return the parcela
+	 */
+	public Integer getParcela() {
+		return parcela;
+	}
+
+	/**
+	 * @param parcela the parcela to set
+	 */
+	public void setParcela(Integer parcela) {
+		this.parcela = parcela;
 	}
 	
 	

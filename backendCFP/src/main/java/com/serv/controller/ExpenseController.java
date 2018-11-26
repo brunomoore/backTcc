@@ -7,7 +7,6 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -37,10 +36,14 @@ public class ExpenseController {
 	public ResponseEntity<List<Expense>> findAll(@RequestParam Long id){
 		return new ResponseEntity<>(expenseService.findAll(id),HttpStatus.OK);
 	}
+	@RequestMapping(value="/profile", method = RequestMethod.GET)
+	public ResponseEntity<List<Expense>> findAllByMes(@RequestParam Long id, @RequestParam int mes){
+		return new ResponseEntity<>(expenseService.findToProfile(id, mes),HttpStatus.OK);
+	}
 	
 	@RequestMapping( method = RequestMethod.POST)
-	public ResponseEntity<Expense> saveExpense(@RequestBody Expense expense){
-		return new ResponseEntity<>(expenseService.save(expense), HttpStatus.CREATED);
+	public ResponseEntity<Expense> saveExpense(@RequestBody Expense expense, @RequestParam Long id){
+		return new ResponseEntity<>(expenseService.save(expense, id), HttpStatus.CREATED);
 	}
 
 	@RequestMapping(value = "/{expenseId}", method = RequestMethod.PUT)
