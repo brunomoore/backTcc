@@ -14,11 +14,14 @@ import com.serv.entities.Receipt;
 public interface ReceiptRepository extends JpaRepository<Receipt, Long>{
 	
 	
-	@Query("select name,sum(value) as receitas from\r\n" + 
-			"Receipt\r\n" + 
-			"where user_id = :id\r\n" + 
-			"GROUP BY name")
+	@Query("select e from\r\n" + 
+			"Receipt e\r\n" + 
+			"where user_id = :id\r\n")
 	List<Receipt> findByUserParams(@Param("id") Long id);
-
+	@Query("select e from\r\n"+
+			"Receipt e\r\n" +
+			"where user_id = :id\r\n" +
+			"and  EXTRACT(MONTH FROM receipt_expire_date) = :mes")
+	List<Receipt> findByMes(@Param("id") Long id, @Param("mes") int mes);
 	
 }

@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.serv.entities.Expense;
 import com.serv.entities.Receipt;
 import com.serv.services.ReceiptService;
 
@@ -37,10 +36,14 @@ public class ReceiptController {
 	public ResponseEntity<List<Receipt>> findAll(@RequestParam Long id){
 		return new ResponseEntity<>(receiptService.findAll(id),HttpStatus.OK);
 	}
+	@RequestMapping(value="/profile", method = RequestMethod.GET)
+	public ResponseEntity<List<Receipt>> findAllByMes(@RequestParam Long id, @RequestParam int mes){
+		return new ResponseEntity<>(receiptService.findToProfile(id, mes),HttpStatus.OK);
+	}
 	
 	@RequestMapping( method = RequestMethod.POST)
-	public ResponseEntity<Receipt> saveReceipt(@RequestBody Receipt receipt){
-		return new ResponseEntity<>(receiptService.save(receipt), HttpStatus.CREATED);
+	public ResponseEntity<Receipt> saveReceipt(@RequestBody Receipt receipt, @RequestParam Long id){
+		return new ResponseEntity<>(receiptService.save(receipt, id), HttpStatus.CREATED);
 	}
 
 	@RequestMapping(value = "/{receiptId}", method = RequestMethod.PUT)
