@@ -48,7 +48,7 @@ public class Expense {
 	private Date expireDate;
 	
 	@Column(name="expense_pay")
-	private Boolean pay;
+	private Boolean pay = false;
 	
 	@Column(name="parcela")
 	private Integer parcela;

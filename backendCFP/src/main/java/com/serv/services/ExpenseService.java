@@ -38,6 +38,7 @@ public class ExpenseService {
 				expenseSave.setName(expense.getName());
 				expenseSave.setParcela(expense.getParcela());
 				expenseSave.setPay(expense.getPay());
+				expenseSave.setExpenseDate(expense.getExpenseDate());
 				expenseSave.setUser(expense.getUser());
 				expenseSave.setValue(valor);
 				expenseSave.setExpireDate(gc.getTime());
