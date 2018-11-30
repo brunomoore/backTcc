@@ -53,6 +53,14 @@ public class Expense {
 	@Column(name="parcela")
 	private Integer parcela;
 	
+	@Column(name="nr_parcela")
+	private Integer numeroParcela;
+	
+	@Column(name="ativo")
+	private Boolean ativo;
+	
+	@Column(name="valor_total")
+	private Float valorTotal;
 	
 	/**
 	 * @return the id
@@ -178,6 +186,48 @@ public class Expense {
 	 */
 	public void setParcela(Integer parcela) {
 		this.parcela = parcela;
+	}
+
+	/**
+	 * @return the numeroParcela
+	 */
+	public Integer getNumeroParcela() {
+		return numeroParcela;
+	}
+
+	/**
+	 * @param numeroParcela the numeroParcela to set
+	 */
+	public void setNumeroParcela(Integer numeroParcela) {
+		this.numeroParcela = numeroParcela;
+	}
+
+	/**
+	 * @return the ativo
+	 */
+	public Boolean getAtivo() {
+		return ativo;
+	}
+
+	/**
+	 * @param ativo the ativo to set
+	 */
+	public void setAtivo(Boolean ativo) {
+		this.ativo = ativo;
+	}
+
+	/**
+	 * @return the valorTotal
+	 */
+	public Float getValorTotal() {
+		return valorTotal;
+	}
+
+	/**
+	 * @param valorTotal the valorTotal to set
+	 */
+	public void setValorTotal(Float valorTotal) {
+		this.valorTotal = valorTotal;
 	}
 	
 	

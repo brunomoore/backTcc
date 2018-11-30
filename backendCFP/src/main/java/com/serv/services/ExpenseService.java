@@ -24,6 +24,8 @@ public class ExpenseService {
 
 	public Expense save(Expense expense, Long id) {
 		expense.setUser(userService.find(id));
+		expense.setValorTotal(expense.getValue());
+		expense.setAtivo(true);
 		GregorianCalendar gc = new GregorianCalendar();
 		if(expense.getParcela() != null) {
 			Float valor = expense.getValue()/expense.getParcela();
@@ -36,12 +38,15 @@ public class ExpenseService {
 				gc.setTime(expense.getExpireDate());
 				gc.add(GregorianCalendar.MONTH, i);
 				expenseSave.setName(expense.getName());
+				expenseSave.setNumeroParcela(i+ 1);
+				expenseSave.setValorTotal(expense.getValue());
 				expenseSave.setParcela(expense.getParcela());
 				expenseSave.setPay(expense.getPay());
 				expenseSave.setExpenseDate(expense.getExpenseDate());
 				expenseSave.setUser(expense.getUser());
 				expenseSave.setValue(valor);
 				expenseSave.setExpireDate(gc.getTime());
+				expenseSave.setAtivo(true);
 				 expenseRepository.save(expenseSave);
 			}
 			
@@ -68,7 +73,9 @@ public class ExpenseService {
 	}
 	
 	public void delete(Long id) {
-		expenseRepository.delete(id);
+		Expense expense = expenseRepository.findOne(id);
+		expense.setAtivo(false);
+		expenseRepository.save(expense);
 	}
 	
 

@@ -15,7 +15,8 @@ public interface ExpenseRepository extends JpaRepository<Expense, Long> {
 	
 	@Query("select e from\r\n" + 
 			"Expense e\r\n" + 
-			"where user_id = :id\r\n")
+			"where user_id = :id\r\n"+
+			"and ativo = true")
 	List<Expense> findByUserParams(@Param("id") Long id);
 	@Query("select e from\r\n"+
 			"Expense e\r\n" +

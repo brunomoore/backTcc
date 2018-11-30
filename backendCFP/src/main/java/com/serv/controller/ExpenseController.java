@@ -7,6 +7,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -46,11 +47,13 @@ public class ExpenseController {
 		return new ResponseEntity<>(expenseService.save(expense, id), HttpStatus.CREATED);
 	}
 
+	@CrossOrigin
 	@RequestMapping(value = "/{expenseId}", method = RequestMethod.PUT)
 	public ResponseEntity<Expense> updateExpense(@PathVariable Long expenseId, @RequestBody Expense expense) {
 		return new ResponseEntity<>(expenseService.update(expense), HttpStatus.OK);
 	}
 
+	@CrossOrigin
 	@RequestMapping(value="/{expenseId}", method=RequestMethod.DELETE)
 	public ResponseEntity<Expense> delete(@PathVariable Long expenseId) {
 		expenseService.delete(expenseId);
