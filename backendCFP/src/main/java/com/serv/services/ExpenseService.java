@@ -1,5 +1,6 @@
 package com.serv.services;
 
+import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.List;
 
@@ -27,6 +28,7 @@ public class ExpenseService {
 		expense.setValorTotal(expense.getValue());
 		expense.setAtivo(true);
 		GregorianCalendar gc = new GregorianCalendar();
+		GregorianCalendar gc2 = new GregorianCalendar();
 		if(expense.getParcela() != null) {
 			Float valor = expense.getValue()/expense.getParcela();
 			for(int i= 0; i < expense.getParcela(); i++) {
@@ -37,12 +39,14 @@ public class ExpenseService {
 //				expense.setExpireDate(Instant.ofEpochMilli(gc.getTime().getTime()).atZone(ZoneId.systemDefault()).toLocalDate());
 				gc.setTime(expense.getExpireDate());
 				gc.add(GregorianCalendar.MONTH, i);
+				gc2.setTime(expense.getExpenseDate());
+				gc2.add(GregorianCalendar.MONTH, i);
 				expenseSave.setName(expense.getName());
 				expenseSave.setNumeroParcela(i+ 1);
 				expenseSave.setValorTotal(expense.getValue());
 				expenseSave.setParcela(expense.getParcela());
 				expenseSave.setPay(expense.getPay());
-				expenseSave.setExpenseDate(expense.getExpenseDate());
+				expenseSave.setExpenseDate(gc2.getTime());
 				expenseSave.setUser(expense.getUser());
 				expenseSave.setValue(valor);
 				expenseSave.setExpireDate(gc.getTime());
@@ -64,10 +68,9 @@ public class ExpenseService {
 	public List<Expense> findAll(Long id) {
 		return expenseRepository.findByUserParams(id);
 	}
-	public List<Expense> findToProfile(Long id, int mes) {
-		return expenseRepository.findByMes(id, mes);
+	public List<Expense> findToProfile(Long id, Date inicio, Date fim) {
+		return expenseRepository.findByMes(id, inicio, fim);
 	}
-
 	public Expense findById(Long id) {
 		return expenseRepository.findOne(id);
 	}

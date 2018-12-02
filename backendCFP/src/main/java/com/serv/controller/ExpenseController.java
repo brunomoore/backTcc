@@ -1,5 +1,6 @@
 package com.serv.controller;
 
+import java.util.Date;
 import java.util.List;
 
 import org.slf4j.Logger;
@@ -38,9 +39,10 @@ public class ExpenseController {
 		return new ResponseEntity<>(expenseService.findAll(id),HttpStatus.OK);
 	}
 	@RequestMapping(value="/profile", method = RequestMethod.GET)
-	public ResponseEntity<List<Expense>> findAllByMes(@RequestParam Long id, @RequestParam int mes){
-		return new ResponseEntity<>(expenseService.findToProfile(id, mes),HttpStatus.OK);
+	public ResponseEntity<List<Expense>> findAllByMes(@RequestParam Long id, @RequestParam Date inicio, @RequestParam Date fim){
+		return new ResponseEntity<>(expenseService.findToProfile(id, inicio, fim),HttpStatus.OK);
 	}
+	
 	
 	@RequestMapping( method = RequestMethod.POST)
 	public ResponseEntity<Expense> saveExpense(@RequestBody Expense expense, @RequestParam Long id){

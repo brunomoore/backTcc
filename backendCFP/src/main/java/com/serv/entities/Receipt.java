@@ -3,7 +3,7 @@
  */
 package com.serv.entities;
 
-import java.time.LocalDate;
+import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -42,13 +42,14 @@ public class Receipt {
 	private ReceiptType type;
 	
 	@Column(name="receipt_date")
-	private LocalDate receiptDate;
+	private Date receiptDate;
 	
 	@Column(name="receipt_expire_date")
-	private LocalDate expireDate;
+	private Date expireDate;
+
 	
-	@Column(name="receipt_pay")
-	private Boolean pay;
+	@Column(name="ativo")
+	private Boolean ativo;
 	
 	/**
 	 * @return the id
@@ -123,46 +124,46 @@ public class Receipt {
 	/**
 	 * @return the receiptDate
 	 */
-	public LocalDate getReceiptDate() {
+	public Date getReceiptDate() {
 		return receiptDate;
 	}
 
 	/**
 	 * @param receiptDate the receiptDate to set
 	 */
-	public void setReceiptDate(LocalDate receiptDate) {
+	public void setReceiptDate(Date receiptDate) {
 		this.receiptDate = receiptDate;
 	}
 
 	/**
 	 * @return the expireDate
 	 */
-	public LocalDate getExpireDate() {
+	public Date getExpireDate() {
 		return expireDate;
 	}
 
 	/**
 	 * @param expireDate the expireDate to set
 	 */
-	public void setExpireDate(LocalDate expireDate) {
+	public void setExpireDate(Date expireDate) {
 		this.expireDate = expireDate;
 	}
 
 	/**
-	 * @return the pay
+	 * @return the ativo
 	 */
-	public Boolean getPay() {
-		return pay;
+	public Boolean getAtivo() {
+		return ativo;
 	}
 
 	/**
-	 * @param pay the pay to set
+	 * @param ativo the ativo to set
 	 */
-	public void setPay(Boolean pay) {
-		this.pay = pay;
+	public void setAtivo(Boolean ativo) {
+		this.ativo = ativo;
 	}
-	
-	
+
+
 
 	
 	

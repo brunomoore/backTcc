@@ -1,5 +1,6 @@
 package com.serv.dao;
 
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -21,7 +22,11 @@ public interface ExpenseRepository extends JpaRepository<Expense, Long> {
 	@Query("select e from\r\n"+
 			"Expense e\r\n" +
 			"where user_id = :id\r\n" +
-			"and  EXTRACT(MONTH FROM expense_expire_date) = :mes")
-	List<Expense> findByMes(@Param("id") Long id, @Param("mes") int mes);
-
+			"and   expense_date between :inicio\r\n "+
+			"and :fim\r\n"+
+			"and ativo = true\r\n"+
+			"and pay = false"
+)
+	List<Expense> findByMes(@Param("id") Long id, @Param("inicio") Date inicio, @Param("fim") Date fim);
+	
 }

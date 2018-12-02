@@ -1,5 +1,6 @@
 package com.serv.controller;
 
+import java.util.Date;
 import java.util.List;
 
 import org.slf4j.Logger;
@@ -7,6 +8,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -37,8 +39,8 @@ public class ReceiptController {
 		return new ResponseEntity<>(receiptService.findAll(id),HttpStatus.OK);
 	}
 	@RequestMapping(value="/profile", method = RequestMethod.GET)
-	public ResponseEntity<List<Receipt>> findAllByMes(@RequestParam Long id, @RequestParam int mes){
-		return new ResponseEntity<>(receiptService.findToProfile(id, mes),HttpStatus.OK);
+	public ResponseEntity<List<Receipt>> findAllByMes(@RequestParam Long id, @RequestParam Date inicio, @RequestParam Date fim){
+		return new ResponseEntity<>(receiptService.findToProfile(id, inicio, fim),HttpStatus.OK);
 	}
 	
 	@RequestMapping( method = RequestMethod.POST)
@@ -46,11 +48,13 @@ public class ReceiptController {
 		return new ResponseEntity<>(receiptService.save(receipt, id), HttpStatus.CREATED);
 	}
 
+	@CrossOrigin
 	@RequestMapping(value = "/{receiptId}", method = RequestMethod.PUT)
 	public ResponseEntity<Receipt> updateReceipt(@PathVariable Long receiptId, @RequestBody Receipt receipt) {
 		return new ResponseEntity<>(receiptService.update(receipt), HttpStatus.OK);
 	}
 
+	@CrossOrigin
 	@RequestMapping(value="/{receiptId}", method=RequestMethod.DELETE)
 	public ResponseEntity<Receipt> delete(@PathVariable Long receiptId) {
 		receiptService.delete(receiptId);

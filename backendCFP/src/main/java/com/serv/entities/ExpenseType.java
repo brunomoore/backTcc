@@ -26,6 +26,8 @@ public class ExpenseType {
 	@Column(name="name")
 	private String name ;
 
+	@Column(name="ativo")
+	private Boolean ativo;
 	
 	/**
 	 * @return the id
@@ -53,6 +55,20 @@ public class ExpenseType {
 	 */
 	public void setName(String name) {
 		this.name = name;
+	}
+
+	/**
+	 * @return the ativo
+	 */
+	public Boolean getAtivo() {
+		return ativo;
+	}
+
+	/**
+	 * @param ativo the ativo to set
+	 */
+	public void setAtivo(Boolean ativo) {
+		this.ativo = ativo;
 	}
 
 	

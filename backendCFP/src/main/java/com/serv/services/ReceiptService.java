@@ -1,5 +1,6 @@
 package com.serv.services;
 
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,6 +23,7 @@ public class ReceiptService {
 
 	public Receipt save(Receipt receipt, Long id) {
 		receipt.setUser(userService.find(id));
+		receipt.setAtivo(true);
 		return receiptRepository.saveAndFlush(receipt);
 	}
 
@@ -32,8 +34,8 @@ public class ReceiptService {
 	public List<Receipt> findAll(Long id) {
 		return receiptRepository.findByUserParams(id);
 	}
-	public List<Receipt> findToProfile(Long id, int mes) {
-		return receiptRepository.findByMes(id, mes);
+	public List<Receipt> findToProfile(Long id, Date inicio, Date fim) {
+		return receiptRepository.findByMes(id, inicio, fim);
 	}
 
 	public Receipt findById(Long id) {
@@ -41,6 +43,9 @@ public class ReceiptService {
 	}
 	
 	public void delete(Long id) {
-		receiptRepository.delete(id);
+		Receipt receipt = receiptRepository.findOne(id);
+		receipt.setAtivo(false);
+		receiptRepository.save(receipt);
 	}
+	
 }

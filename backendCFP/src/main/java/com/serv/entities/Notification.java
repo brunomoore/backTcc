@@ -37,6 +37,9 @@ public class Notification {
 	@ManyToOne
 	@JoinColumn(name="user_id")
 	private User user;
+	
+	@Column(name="ativo")
+	private Boolean ativo;
 
 	/**
 	 * @return the id
@@ -106,6 +109,20 @@ public class Notification {
 	 */
 	public void setUser(User user) {
 		this.user = user;
+	}
+
+	/**
+	 * @return the ativo
+	 */
+	public Boolean getAtivo() {
+		return ativo;
+	}
+
+	/**
+	 * @param ativo the ativo to set
+	 */
+	public void setAtivo(Boolean ativo) {
+		this.ativo = ativo;
 	}
 
 	

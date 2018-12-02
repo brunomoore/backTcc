@@ -16,7 +16,8 @@ public interface NotificationRepository extends JpaRepository<Notification, Long
 	
 	@Query("select e from\r\n" + 
 			"Notification e\r\n" + 
-			"where user_id = :id\r\n")
+			"where user_id = :id\r\n" +
+			"and ativo = true")
 	List<Notification> findByUserParams(@Param("id") Long id);
 
 
