@@ -70,7 +70,10 @@ public class WebConfig extends WebSecurityConfigurerAdapter {
 				"/logout",
 				"/receipt/**",
 				"/expense/**",
-				"/profile/**").permitAll()
+				"/profile/**",
+				"/notification/**",
+				"/receiptType/**",
+				"/expenseType/**").permitAll()
 		// authenticate all remaining URLS
 		.anyRequest().fullyAuthenticated().and()
       /* "/logout" will log the user out by invalidating the HTTP Session,

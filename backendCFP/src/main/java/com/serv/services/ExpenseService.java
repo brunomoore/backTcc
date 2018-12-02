@@ -22,9 +22,13 @@ public class ExpenseService {
 	@Autowired
 	UserService userService;
 
+	@Autowired
+	ExpenseTypeService expenseTypeService;
 
-	public Expense save(Expense expense, Long id) {
+
+	public Expense save(Expense expense, Long id, Long expenseId) {
 		expense.setUser(userService.find(id));
+		expense.setType(expenseTypeService.findById(expenseId));
 		expense.setValorTotal(expense.getValue());
 		expense.setAtivo(true);
 		GregorianCalendar gc = new GregorianCalendar();
@@ -51,6 +55,7 @@ public class ExpenseService {
 				expenseSave.setValue(valor);
 				expenseSave.setExpireDate(gc.getTime());
 				expenseSave.setAtivo(true);
+				expenseSave.setType(expense.getType());
 				 expenseRepository.save(expenseSave);
 			}
 			

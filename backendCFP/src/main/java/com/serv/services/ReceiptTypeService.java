@@ -17,7 +17,12 @@ public class ReceiptTypeService {
 	@Autowired
 	ReceiptTypeRepository receiptTypeRepository;
 
-	public ReceiptType save(ReceiptType receiptType) {
+	@Autowired
+	UserService userService;
+
+	public ReceiptType save(ReceiptType receiptType, Long id) {
+		receiptType.setUser(userService.find(id));
+		receiptType.setAtivo(true);
 		return receiptTypeRepository.saveAndFlush(receiptType);
 	}
 
@@ -29,8 +34,15 @@ public class ReceiptTypeService {
 		return receiptTypeRepository.findAll();
 	}
 
+
 	public ReceiptType findById(Long id) {
 		return receiptTypeRepository.findOne(id);
+	}
+	
+	public void delete(Long id) {
+		ReceiptType receiptType = receiptTypeRepository.findOne(id);
+		receiptType.setAtivo(false);
+		receiptTypeRepository.save(receiptType);
 	}
 
 }

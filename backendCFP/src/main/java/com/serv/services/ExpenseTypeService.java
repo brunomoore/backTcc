@@ -17,7 +17,12 @@ public class ExpenseTypeService {
 	@Autowired
 	ExpenseTypeRepository expenseTypeRepository;
 
-	public ExpenseType save(ExpenseType expenseType) {
+	@Autowired
+	UserService userService;
+
+	public ExpenseType save(ExpenseType expenseType, Long id) {
+		expenseType.setUser(userService.find(id));
+		expenseType.setAtivo(true);
 		return expenseTypeRepository.saveAndFlush(expenseType);
 	}
 
@@ -29,8 +34,15 @@ public class ExpenseTypeService {
 		return expenseTypeRepository.findAll();
 	}
 
+
 	public ExpenseType findById(Long id) {
 		return expenseTypeRepository.findOne(id);
+	}
+	
+	public void delete(Long id) {
+		ExpenseType expenseType = expenseTypeRepository.findOne(id);
+		expenseType.setAtivo(false);
+		expenseTypeRepository.save(expenseType);
 	}
 
 }

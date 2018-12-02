@@ -45,8 +45,8 @@ public class ExpenseController {
 	
 	
 	@RequestMapping( method = RequestMethod.POST)
-	public ResponseEntity<Expense> saveExpense(@RequestBody Expense expense, @RequestParam Long id){
-		return new ResponseEntity<>(expenseService.save(expense, id), HttpStatus.CREATED);
+	public ResponseEntity<Expense> saveExpense(@RequestBody Expense expense, @RequestParam Long id, @RequestParam Long expenseId){
+		return new ResponseEntity<>(expenseService.save(expense, id, expenseId), HttpStatus.CREATED);
 	}
 
 	@CrossOrigin

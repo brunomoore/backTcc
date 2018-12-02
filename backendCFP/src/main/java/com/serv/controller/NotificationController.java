@@ -7,6 +7,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -42,15 +43,18 @@ public class NotificationController {
 		return new ResponseEntity<>(notificationService.save(notification, id), HttpStatus.CREATED);
 	}
 
+	@CrossOrigin
 	@RequestMapping(value = "/{notificationId}", method = RequestMethod.PUT)
 	public ResponseEntity<Notification> updateNotification(@PathVariable Long notificationId, @RequestBody Notification notification) {
 		return new ResponseEntity<>(notificationService.update(notification), HttpStatus.OK);
 	}
 
+	@CrossOrigin
 	@RequestMapping(value="/{notificationId}", method=RequestMethod.DELETE)
 	public ResponseEntity<Notification> delete(@PathVariable Long notificationId) {
 		notificationService.delete(notificationId);
 		return new ResponseEntity<>(HttpStatus.NO_CONTENT);
 	}
+
 	
 }

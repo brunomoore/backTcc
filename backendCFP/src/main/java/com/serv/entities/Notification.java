@@ -32,7 +32,7 @@ public class Notification {
 	private String description;
 	
 	@Column(name="param")
-	private Long param;
+	private String param;
 
 	@ManyToOne
 	@JoinColumn(name="user_id")
@@ -86,14 +86,14 @@ public class Notification {
 	/**
 	 * @return the param
 	 */
-	public Long getParam() {
+	public String getParam() {
 		return param;
 	}
 
 	/**
 	 * @param param the param to set
 	 */
-	public void setParam(Long param) {
+	public void setParam(String param) {
 		this.param = param;
 	}
 
