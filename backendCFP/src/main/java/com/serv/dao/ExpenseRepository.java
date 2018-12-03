@@ -29,4 +29,15 @@ public interface ExpenseRepository extends JpaRepository<Expense, Long> {
 )
 	List<Expense> findByMes(@Param("id") Long id, @Param("inicio") Date inicio, @Param("fim") Date fim);
 	
+//	@Query("select e from\r\n"+
+//			"Expense e\r\n" +
+//			"where user_id = :id\r\n" +
+//			"and   expense_date between :inicio\r\n "+
+//			"and :fim\r\n"+
+//			"and ativo = true\r\n"+
+//			"and pay = false"
+//)
+//	List<Expense> findByMeseAno(@Param("id") Long id, @Param("mes") int mes, @Param("ano") String ano);
+	
+	
 }
