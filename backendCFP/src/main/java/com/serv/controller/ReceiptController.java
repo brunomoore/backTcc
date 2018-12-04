@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.serv.entities.Expense;
 import com.serv.entities.Receipt;
 import com.serv.services.ReceiptService;
 
@@ -41,6 +42,11 @@ public class ReceiptController {
 	@RequestMapping(value="/profile", method = RequestMethod.GET)
 	public ResponseEntity<List<Receipt>> findAllByMes(@RequestParam Long id, @RequestParam Date inicio, @RequestParam Date fim){
 		return new ResponseEntity<>(receiptService.findToProfile(id, inicio, fim),HttpStatus.OK);
+	}
+	
+	@RequestMapping(value="/profilemes", method = RequestMethod.GET)
+	public ResponseEntity<List<Receipt>> findAllByMeseano(@RequestParam Long id, @RequestParam int mes, @RequestParam int ano){
+		return new ResponseEntity<>(receiptService.findToProfileMes(id, mes, ano),HttpStatus.OK);
 	}
 	
 	@RequestMapping( method = RequestMethod.POST)

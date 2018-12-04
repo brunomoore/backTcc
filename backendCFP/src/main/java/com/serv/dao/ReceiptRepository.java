@@ -8,6 +8,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
+import com.serv.entities.Expense;
 import com.serv.entities.Receipt;
 
 
@@ -28,5 +29,15 @@ public interface ReceiptRepository extends JpaRepository<Receipt, Long>{
 			"and ativo = true"
 )
 	List<Receipt> findByMes(@Param("id") Long id, @Param("inicio") Date inicio, @Param("fim") Date fim);
+	
+	
+	@Query("select e from\r\n"+
+			"Receipt e\r\n" +
+			"where user_id = :id\r\n" +
+			"and EXTRACT(YEAR FROM  receipt_expire_date) = :ano\r\n "+
+			"and EXTRACT(MONTH FROM receipt_expire_date) = :mes\r\n "+
+			"and ativo = true"
+)
+	List<Receipt> findByMeseAno(@Param("id") Long id, @Param("mes") int mes, @Param("ano") int ano);
 	
 }

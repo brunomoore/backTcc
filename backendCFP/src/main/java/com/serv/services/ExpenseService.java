@@ -76,6 +76,9 @@ public class ExpenseService {
 	public List<Expense> findToProfile(Long id, Date inicio, Date fim) {
 		return expenseRepository.findByMes(id, inicio, fim);
 	}
+	public List<Expense> findToProfileMes(Long id, int mes, int ano) {
+		return expenseRepository.findByMeseAno(id, mes, ano);
+	}
 	public Expense findById(Long id) {
 		return expenseRepository.findOne(id);
 	}

@@ -42,7 +42,10 @@ public class ExpenseController {
 	public ResponseEntity<List<Expense>> findAllByMes(@RequestParam Long id, @RequestParam Date inicio, @RequestParam Date fim){
 		return new ResponseEntity<>(expenseService.findToProfile(id, inicio, fim),HttpStatus.OK);
 	}
-	
+	@RequestMapping(value="/profilemes", method = RequestMethod.GET)
+	public ResponseEntity<List<Expense>> findAllByMeseano(@RequestParam Long id, @RequestParam int mes, @RequestParam int ano){
+		return new ResponseEntity<>(expenseService.findToProfileMes(id, mes, ano),HttpStatus.OK);
+	}
 	
 	@RequestMapping( method = RequestMethod.POST)
 	public ResponseEntity<Expense> saveExpense(@RequestBody Expense expense, @RequestParam Long id, @RequestParam Long expenseId){

@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.serv.dao.ReceiptRepository;
+import com.serv.entities.Expense;
 import com.serv.entities.Receipt;
 /** 
  * @author moore bruno
@@ -37,7 +38,9 @@ public class ReceiptService {
 	public List<Receipt> findToProfile(Long id, Date inicio, Date fim) {
 		return receiptRepository.findByMes(id, inicio, fim);
 	}
-
+	public List<Receipt> findToProfileMes(Long id, int mes, int ano) {
+		return receiptRepository.findByMeseAno(id, mes, ano);
+	}
 	public Receipt findById(Long id) {
 		return receiptRepository.findOne(id);
 	}
