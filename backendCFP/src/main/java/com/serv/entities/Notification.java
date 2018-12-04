@@ -33,6 +33,9 @@ public class Notification {
 	
 	@Column(name="param")
 	private String param;
+	
+	@Column(name="tipo")
+	private String tipo;
 
 	@ManyToOne
 	@JoinColumn(name="user_id")
@@ -53,6 +56,21 @@ public class Notification {
 	 */
 	public void setId(Long id) {
 		this.id = id;
+	}
+	
+
+	/**
+	 * @return the tipo
+	 */
+	public String getTipo() {
+		return tipo;
+	}
+
+	/**
+	 * @param tipo the tipo to set
+	 */
+	public void setTipo(String tipo) {
+		this.tipo = tipo;
 	}
 
 	/**
